@@ -19,7 +19,7 @@ export const CodeEditor = ({ isDarkMode }: { isDarkMode: boolean }) => {
     currentLanguage.initialHelloWorldCode
   );
 
-  const [isFullScreen, setIsFullScreen] = useState(true);
+  const [isFullScreen, setIsFullScreen] = useState(false);
 
   const fullScreenHandler = () => {
     setIsFullScreen((full) => !full);
