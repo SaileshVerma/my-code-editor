@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { CodeEditor } from "./components/CodeEditor";
-import { INITIAL_CODE } from "./utils/constants/data";
 
 function App() {
   return (
