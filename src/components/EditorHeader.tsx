@@ -10,6 +10,7 @@ import { useState } from "react";
 interface EditorHeaderProps {
   code: string;
   isFullScreen: boolean;
+  isDarkMode: boolean;
   currentLanguage: LanguageBundle;
   setCurrentLanguage: React.Dispatch<React.SetStateAction<LanguageBundle>>;
   fullScreenHandler: () => void;
@@ -19,6 +20,7 @@ interface EditorHeaderProps {
 
 export const EditorHeaderComponent = ({
   code,
+  isDarkMode,
   isFullScreen,
   currentLanguage,
   setCurrentLanguage,
@@ -38,7 +40,11 @@ export const EditorHeaderComponent = ({
   };
 
   return (
-    <div className="bg-gray-600 border rounded-t border-gray-700 p-2 px-4">
+    <div
+      className={` border rounded-t border-gray-700 p-2 px-4
+    ${isDarkMode ? "bg-gray-600" : "bg-gray-500"}
+    `}
+    >
       <div className="flex flex-col-reverse md:flex-row  text-white justify-between text-sm">
         <div className="flex gap-3 md:gap-6 flex-col md:flex-row">
           <div className="flex items-center">

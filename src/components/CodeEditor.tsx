@@ -8,7 +8,7 @@ import { LanguageBundlesList } from "../utils/constants/languages_list";
 import { getThemeObject } from "../utils/helpers/get_theme_on_value";
 import { EditorHeaderComponent } from "./EditorHeader";
 
-export const CodeEditor = () => {
+export const CodeEditor = ({ isDarkMode }: { isDarkMode: boolean }) => {
   const codeRef = useRef<HTMLTextAreaElement>(null);
 
   const [currentLanguage, setCurrentLanguage] = useState(
@@ -40,12 +40,13 @@ export const CodeEditor = () => {
 
   return (
     <div
-      className={`flex flex-col pt-8 transition-all duration-500 ${
+      className={`flex flex-col pt-8 transition-all duration-400 ${
         isFullScreen ? "h-full w-full" : "h-1/2 w-1/2"
       }`}
     >
       <EditorHeaderComponent
         code={code}
+        isDarkMode={isDarkMode}
         currentLanguage={currentLanguage}
         isFullScreen={isFullScreen}
         fullScreenHandler={fullScreenHandler}
@@ -73,7 +74,9 @@ export const CodeEditor = () => {
             <div
               className={`absolute  transition-all duration-500 ${
                 isFullScreen ? "h-64 lg:h-96" : "h-64"
-              } z-2 w-full p-4 bg-gray-800 font-mono border select-none border-gray-700 rounded-b overflow-hidden`}
+              } z-2 w-full p-4 ${
+                isDarkMode ? "bg-gray-800" : "bg-gray-200"
+              }  font-mono border select-none border-gray-700 rounded-b overflow-hidden`}
             >
               {tokens.map((line, i) => {
                 return (
